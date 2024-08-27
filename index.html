@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Planilha para OneDrive</title>
+    <script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
+</head>
+<body>
+    <h1>Upload de Planilha</h1>
+    <div id="div1">
+        <input type="file" id="fileInput"/>
+        <button onclick="uploadFile()">Upload</button>
+        <p id="progress"></p>
+    </div>
+
+    <script>
+        var odOptions = {
+                clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
+                action: "save",
+                sourceInputElementId: "fileInput",
+                sourceUri: "",
+                fileName: "acertaexpress.xlsx",
+                openInNewWindow: false,
+                viewType: "all",
+                nameConflictBehavior: "replace",
+                advanced: {},
+                success: function(files) { onSuccessHandler(files) },
+                progress: function(percent) { onProgressLoadHandler(percent) },
+                cancel: function() { },
+                error: function(error) { onErrorHandler(error) }
+            }
+
+        function onProgressLoadHandler(percent){
+            document.getElementById('progress').textContent = "Progress: " + percent;
+        }
+
+        function onSuccessHandler(files){
+            document.getElementById('progress').textContent = "Deu certo!";
+        }
+
+        function onErrorHandler(error){
+            document.getElementById('progress').textContent = "Deu erro!" + error;
+        }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Por favor, selecione um arquivo.');
+                return;
+            }
+            OneDrive.save(odOptions);
+        }
+    </script>
+</body>
+</html>
