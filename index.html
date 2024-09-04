@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload de Planilha para OneDrive</title>
+    <title>Upload da Planilha de Acompanhamento de SAC - ACERTA EXPRESS</title>
     <script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
 </head>
 <body>
-    <h1>Upload de Planilha</h1>
+    <h1>Upload da Planilha</h1>
     <div id="div1">
         <input type="file" id="fileInput"/>
         <button onclick="uploadFile()">Upload</button>
@@ -36,7 +36,7 @@
         }
 
         function onSuccessHandler(files){
-            document.getElementById('progress').textContent = "Deu certo!";
+            document.getElementById('progress').textContent = "Upload realizado com sucesso !!!";
         }
 
         function onErrorHandler(error){
