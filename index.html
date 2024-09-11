@@ -37,29 +37,55 @@
     <!-- Logomarca alinhada à esquerda -->
     <img src="logo-black-white@2x.png" class="logo">
     
-    <h1>Upload da Planilha de Acompanhamento do SAC</h1>
+    <h1>Upload - Planilha de minutas em aberto:</h1>
     <div id="div1">
-        <input type="file" id="fileInput"/>
+        <input type="file" id="fileInput1"/>
         <button onclick="uploadFile()">Upload</button>
-        <p id="progress"></p>
+        <p id="progress1"></p>
     </div>
+    <hr> <!-- Linha horizontal após a primeira caixa de upload -->
+
+    <h1>Upload - Agendamentos:</h1>
+    <div id="div1">
+        <input type="file" id="fileInput2"/>
+        <button onclick="uploadFile()">Upload</button>
+        <p id="progress2"></p>
+    </div>
+    <hr> <!-- Linha horizontal após a segunda caixa de upload -->
+
+    <h1>Upload - Perecíveis:</h1>
+    <div id="div1">
+        <input type="file" id="fileInput3"/>
+        <button onclick="uploadFile()">Upload</button>
+        <p id="progress3"></p>
+    </div>
+    <hr> <!-- Linha horizontal após a terceira caixa de upload -->
+
+    <h1>Upload - Atendimentos:</h1>
+    <div id="div1">
+        <input type="file" id="fileInput4"/>
+        <button onclick="uploadFile()">Upload</button>
+        <p id="progress4"></p>
+    </div>
+    <hr> <!-- Linha horizontal após a quarta caixa de upload -->
 
     <script>
+        // Funções e configuração do OneDrive permanecem as mesmas
         var odOptions = {
-                clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
-                action: "save",
-                sourceInputElementId: "fileInput",
-                sourceUri: "",
-                fileName: "acertaexpress.xlsx",
-                openInNewWindow: false,
-                viewType: "all",
-                nameConflictBehavior: "replace",
-                advanced: {},
-                success: function(files) { onSuccessHandler(files) },
-                progress: function(percent) { onProgressLoadHandler(percent) },
-                cancel: function() { },
-                error: function(error) { onErrorHandler(error) }
-            }
+            clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
+            action: "save",
+            sourceInputElementId: "",
+            sourceUri: "",
+            fileName: "",
+            openInNewWindow: false,
+            viewType: "all",
+            nameConflictBehavior: "replace",
+            advanced: {},
+            success: function(files) { onSuccessHandler(files) },
+            progress: function(percent) { onProgressLoadHandler(percent) },
+            cancel: function() { },
+            error: function(error) { onErrorHandler(error) }
+        };
 
         function onProgressLoadHandler(percent){
             document.getElementById('progress').textContent = "Progress: " + percent;
