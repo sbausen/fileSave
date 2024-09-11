@@ -37,6 +37,7 @@
     <!-- Logomarca alinhada à esquerda -->
     <img src="logo-black-white@2x.png" class="logo">
     
+    <!-- Seção Minutas em Aberto -->
     <h1>Upload - Planilha de minutas em aberto:</h1>
     <div id="div1">
         <input type="file" id="fileInput1"/>
@@ -45,6 +46,7 @@
     </div>
     <hr>
 
+    <!-- Seção Agendamentos -->
     <h1>Upload - Agendamentos:</h1>
     <div id="div1">
         <input type="file" id="fileInput2"/>
@@ -53,6 +55,7 @@
     </div>
     <hr>
 
+    <!-- Seção Perecíveis -->
     <h1>Upload - Perecíveis:</h1>
     <div id="div1">
         <input type="file" id="fileInput3"/>
@@ -61,6 +64,7 @@
     </div>
     <hr>
 
+    <!-- Seção Atendimentos -->
     <h1>Upload - Atendimentos:</h1>
     <div id="div1">
         <input type="file" id="fileInput4"/>
@@ -87,18 +91,21 @@
         };
 
         function onProgressLoadHandler(percent){
-            document.getElementById('progress').textContent = "Progress: " + percent;
+            document.getElementById('progress' + currentFileInputId.slice(-1)).textContent = "Progress: " + percent;
         }
 
         function onSuccessHandler(files){
-            document.getElementById('progress').textContent = "Upload realizado com sucesso !!";
+            document.getElementById('progress' + currentFileInputId.slice(-1)).textContent = "Upload realizado com sucesso !!";
         }
 
         function onErrorHandler(error){
-            document.getElementById('progress').textContent = "Deu erro!" + error;
+            document.getElementById('progress' + currentFileInputId.slice(-1)).textContent = "Erro: " + error;
         }
 
+        let currentFileInputId = "";
+
         async function uploadFile(fileInputId, fileName) {
+            currentFileInputId = fileInputId;
             const fileInput = document.getElementById(fileInputId);
             if (fileInput.files.length === 0) {
                 alert('Por favor, selecione um arquivo.');
