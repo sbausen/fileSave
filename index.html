@@ -39,53 +39,27 @@
     
     <h1>Upload - Planilha de minutas em aberto:</h1>
     <div id="div1">
-        <input type="file" id="fileInput1"/>
+        <input type="file" id="fileInput"/>
         <button onclick="uploadFile()">Upload</button>
-        <p id="progress1"></p>
+        <p id="progress"></p>
     </div>
-    <hr> <!-- Linha horizontal após a primeira caixa de upload -->
-
-    <h1>Upload - Agendamentos:</h1>
-    <div id="div1">
-        <input type="file" id="fileInput2"/>
-        <button onclick="uploadFile()">Upload</button>
-        <p id="progress2"></p>
-    </div>
-    <hr> <!-- Linha horizontal após a segunda caixa de upload -->
-
-    <h1>Upload - Perecíveis:</h1>
-    <div id="div1">
-        <input type="file" id="fileInput3"/>
-        <button onclick="uploadFile()">Upload</button>
-        <p id="progress3"></p>
-    </div>
-    <hr> <!-- Linha horizontal após a terceira caixa de upload -->
-
-    <h1>Upload - Atendimentos:</h1>
-    <div id="div1">
-        <input type="file" id="fileInput4"/>
-        <button onclick="uploadFile()">Upload</button>
-        <p id="progress4"></p>
-    </div>
-    <hr> <!-- Linha horizontal após a quarta caixa de upload -->
 
     <script>
-        // Funções e configuração do OneDrive permanecem as mesmas
         var odOptions = {
-            clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
-            action: "save",
-            sourceInputElementId: "",
-            sourceUri: "",
-            fileName: "",
-            openInNewWindow: false,
-            viewType: "all",
-            nameConflictBehavior: "replace",
-            advanced: {},
-            success: function(files) { onSuccessHandler(files) },
-            progress: function(percent) { onProgressLoadHandler(percent) },
-            cancel: function() { },
-            error: function(error) { onErrorHandler(error) }
-        };
+                clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
+                action: "save",
+                sourceInputElementId: "fileInput",
+                sourceUri: "",
+                fileName: "acertaexpress.xlsx",
+                openInNewWindow: false,
+                viewType: "all",
+                nameConflictBehavior: "replace",
+                advanced: {},
+                success: function(files) { onSuccessHandler(files) },
+                progress: function(percent) { onProgressLoadHandler(percent) },
+                cancel: function() { },
+                error: function(error) { onErrorHandler(error) }
+            }
 
         function onProgressLoadHandler(percent){
             document.getElementById('progress').textContent = "Progress: " + percent;
@@ -108,5 +82,144 @@
             OneDrive.save(odOptions);
         }
     </script>
+	
+	<h1>Upload - Agendamentos:</h1>
+    <div id="div1">
+        <input type="file" id="fileInput"/>
+        <button onclick="uploadFile()">Upload</button>
+        <p id="progress"></p>
+    </div>
+
+    <script>
+        var odOptions = {
+                clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
+                action: "save",
+                sourceInputElementId: "fileInput",
+                sourceUri: "",
+                fileName: "agendamento.xlsx",
+                openInNewWindow: false,
+                viewType: "all",
+                nameConflictBehavior: "replace",
+                advanced: {},
+                success: function(files) { onSuccessHandler(files) },
+                progress: function(percent) { onProgressLoadHandler(percent) },
+                cancel: function() { },
+                error: function(error) { onErrorHandler(error) }
+            }
+
+        function onProgressLoadHandler(percent){
+            document.getElementById('progress').textContent = "Progress: " + percent;
+        }
+
+        function onSuccessHandler(files){
+            document.getElementById('progress').textContent = "Upload realizado com sucesso !!";
+        }
+
+        function onErrorHandler(error){
+            document.getElementById('progress').textContent = "Deu erro!" + error;
+        }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Por favor, selecione um arquivo.');
+                return;
+            }
+            OneDrive.save(odOptions);
+        }
+    </script>
+	
+	<h1>Upload - Perecíveis:</h1>
+    <div id="div1">
+        <input type="file" id="fileInput"/>
+        <button onclick="uploadFile()">Upload</button>
+        <p id="progress"></p>
+    </div>
+
+    <script>
+        var odOptions = {
+                clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
+                action: "save",
+                sourceInputElementId: "fileInput",
+                sourceUri: "",
+                fileName: "pereciveis.xlsx",
+                openInNewWindow: false,
+                viewType: "all",
+                nameConflictBehavior: "replace",
+                advanced: {},
+                success: function(files) { onSuccessHandler(files) },
+                progress: function(percent) { onProgressLoadHandler(percent) },
+                cancel: function() { },
+                error: function(error) { onErrorHandler(error) }
+            }
+
+        function onProgressLoadHandler(percent){
+            document.getElementById('progress').textContent = "Progress: " + percent;
+        }
+
+        function onSuccessHandler(files){
+            document.getElementById('progress').textContent = "Upload realizado com sucesso !!";
+        }
+
+        function onErrorHandler(error){
+            document.getElementById('progress').textContent = "Deu erro!" + error;
+        }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Por favor, selecione um arquivo.');
+                return;
+            }
+            OneDrive.save(odOptions);
+        }
+    </script>
+	
+	<h1>Upload - Atendimentos:</h1>
+    <div id="div1">
+        <input type="file" id="fileInput"/>
+        <button onclick="uploadFile()">Upload</button>
+        <p id="progress"></p>
+    </div>
+
+    <script>
+        var odOptions = {
+                clientId: "1cd6da42-bffd-48cf-a5f6-b7c1953e843f",
+                action: "save",
+                sourceInputElementId: "fileInput",
+                sourceUri: "",
+                fileName: "atendimento.xlsx",
+                openInNewWindow: false,
+                viewType: "all",
+                nameConflictBehavior: "replace",
+                advanced: {},
+                success: function(files) { onSuccessHandler(files) },
+                progress: function(percent) { onProgressLoadHandler(percent) },
+                cancel: function() { },
+                error: function(error) { onErrorHandler(error) }
+            }
+
+        function onProgressLoadHandler(percent){
+            document.getElementById('progress').textContent = "Progress: " + percent;
+        }
+
+        function onSuccessHandler(files){
+            document.getElementById('progress').textContent = "Upload realizado com sucesso !!";
+        }
+
+        function onErrorHandler(error){
+            document.getElementById('progress').textContent = "Deu erro!" + error;
+        }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Por favor, selecione um arquivo.');
+                return;
+            }
+            OneDrive.save(odOptions);
+        }
+    </script>
+
 </body>
 </html>
